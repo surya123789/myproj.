@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordpress
+  namespace: cep-project1
   labels:
     app: wordpress
 spec:
@@ -17,6 +18,8 @@ spec:
         app: wordpress
         tier: frontend
     spec:
+      nodeSelector:
+          environment: production
       containers:
       - image: wordpress:4.8-apache
         name: wordpress
